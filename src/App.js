@@ -1,23 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
-
+import { useDispatch,useSelector } from 'react-redux';
+import { kurang,tambah } from './redux/Action/Initaction';
 function App() {
+  const getstatedata = useSelector((state)=>state.IniSireducer);
+  console.log(getstatedata);
+  const dispact = useDispatch();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>{getstatedata}</div>
+      <div>
+        <button onClick={()=>dispact(tambah())}>Tambah</button>
+        <button onClick={()=>dispact(kurang())}>Kurang</button>
+      </div>
     </div>
   );
 }
